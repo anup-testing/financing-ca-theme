@@ -1,0 +1,5 @@
+/node_modules/
+/vendor/
+/assets/build/
+.env.local
+.phpunit.result.cache

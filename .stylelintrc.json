@@ -1,0 +1,8 @@
+{
+	"extends": "@wordpress/stylelint-config/scss",
+	"ignoreFiles": [ "assets/build/**", "vendor/**", "node_modules/**" ],
+	"rules": {
+		"declaration-property-value-no-unknown": null,
+		"no-descending-specificity": null
+	}
+}

@@ -1,0 +1,5 @@
+{
+	"core": null,
+	"themes": [ "." ],
+	"config": { "WP_DEBUG": true }
+}

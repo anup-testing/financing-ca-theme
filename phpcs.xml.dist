@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<ruleset name="Financing.ca Theme">
+	<description>PHPCS rules for the Financing.ca theme.</description>
+
+	<file>.</file>
+	<exclude-pattern>*/patterns/*</exclude-pattern>
+	<exclude-pattern>*/assets/build/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="ps"/>
+
+	<rule ref="rtCampWP"/>
+
+	<config name="testVersion" value="8.2-"/>
+	<config name="minimum_wp_version" value="6.6"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array"><element value="financing-ca"/></property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="financing_ca"/>
+				<element value="FINANCING_CA"/>
+				<element value="Financing\Theme"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="Universal.Arrays.DisallowShortArraySyntax"><severity>0</severity></rule>
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax"><severity>0</severity></rule>
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="strict_class_file_names" value="false"/>
+		</properties>
+		<exclude-pattern>*/inc/*</exclude-pattern>
+	</rule>
+</ruleset>

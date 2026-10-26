@@ -1,0 +1,27 @@
+.editor-styles-wrapper{
+  --ink:#06203f;
+  --ink-2:#0d3561;
+  --body:#41536b;
+  --muted:#6b7d94;
+  --line:#e2e8f0;
+  --bg:#fff;
+  --tint:#f5f8fc;
+  --brand:#0a5cff;
+  --brand-dk:#0747c7;
+  --accent:#00b779;
+  --accent-dk:#00935f;
+  --amber:#f0a500;
+  --radius:18px;
+  --radius-sm:12px;
+  --shadow:0 18px 44px -18px rgba(6,32,63,.28);
+  --shadow-lg:0 36px 80px -28px rgba(6,32,63,.38);
+  --maxw:1180px;
+}
+
+.reveal{opacity:1!important;transform:none!important}
+
+.site-header{position:static!important}
+
+.stats-in strong{min-height:1em}
+
+.editor-styles-wrapper .wp-block-html{padding:0}

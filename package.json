@@ -1,0 +1,35 @@
+{
+	"name": "financing-ca-theme",
+	"version": "1.0.0",
+	"description": "Block theme for financing.ca",
+	"private": true,
+	"license": "GPL-2.0-or-later",
+	"engines": {
+		"node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+	},
+	"scripts": {
+		"build:dev": "wp-scripts build --config webpack.config.js --no-minimize",
+		"build:prod": "wp-scripts build --config webpack.config.js",
+		"start": "wp-scripts start --config webpack.config.js",
+		"lint:all": "npm-run-all --parallel lint:css lint:js lint:php",
+		"lint:css": "wp-scripts lint-style \"src/**/*.scss\"",
+		"lint:js": "wp-scripts lint-js ./src ./tests/js",
+		"lint:php": "composer phpcs",
+		"lint:php:fix": "composer phpcs:fix",
+		"lint:staged": "lint-staged",
+		"test": "npm-run-all --parallel test:js test:php",
+		"test:js": "wp-scripts test-unit-js --config=tests/js/jest.config.js --passWithNoTests",
+		"test:php": "composer exec phpunit -- --do-not-cache-result",
+		"pot": "composer pot"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^31.0.0",
+		"@wordpress/stylelint-config": "^23.0.0",
+		"copy-webpack-plugin": "^13.0.0",
+		"lint-staged": "^16.0.0",
+		"npm-run-all": "^4.1.5",
+		"sass": "^1.80.0",
+		"sass-loader": "^16.0.0",
+		"typescript": "^5.9.3"
+	}
+}
