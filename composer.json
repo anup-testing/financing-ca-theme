@@ -1,6 +1,6 @@
 {
-	"name": "financing/financing-ca-theme",
-	"description": "Block theme for financing.ca, structured after rtCamp's theme-elementary.",
+	"name": "tankless/the-tankless-theme",
+	"description": "Block theme for The Tankless (thetankless.ca), structured after rtCamp's theme-elementary.",
 	"type": "wordpress-theme",
 	"license": "GPL-2.0-or-later",
 	"require": {
@@ -17,10 +17,10 @@
 		"rtcamp/wp-phpstan": "^1.0"
 	},
 	"autoload": {
-		"psr-4": { "Financing\\Theme\\": "inc/" }
+		"psr-4": { "Tankless\\Theme\\": "inc/" }
 	},
 	"autoload-dev": {
-		"psr-4": { "Financing\\Theme\\Tests\\": "tests/php/" }
+		"psr-4": { "Tankless\\Theme\\Tests\\": "tests/php/" }
 	},
 	"config": {
 		"allow-plugins": {
@@ -32,6 +32,6 @@
 		"phpcs": "phpcs",
 		"phpcs:fix": "phpcbf",
 		"phpstan": "phpstan analyse --memory-limit=1G",
-		"pot": "wp i18n make-pot . ./languages/financing-ca.pot --domain=financing-ca --include=\"inc,patterns,assets/build/js\""
+		"pot": "wp i18n make-pot . ./languages/the-tankless.pot --domain=the-tankless --include=\"inc,patterns,assets/build/js\""
 	}
 }

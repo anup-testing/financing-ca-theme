@@ -2,12 +2,12 @@
 /**
  * Security headers carried over from vercel.json.
  *
- * @package Financing\Theme
+ * @package Tankless\Theme
  */
 
 declare( strict_types = 1 );
 
-namespace Financing\Theme\Core;
+namespace Tankless\Theme\Core;
 
 use rtCamp\WPPrimitives\Contracts\Interfaces\Registrable;
 

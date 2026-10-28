@@ -2,12 +2,12 @@
 /**
  * Loads the Composer autoloader without fataling when it is missing.
  *
- * @package Financing\Theme
+ * @package Tankless\Theme
  */
 
 declare( strict_types = 1 );
 
-namespace Financing\Theme;
+namespace Tankless\Theme;
 
 /**
  * Class - Autoloader
@@ -20,7 +20,7 @@ final class Autoloader {
 	 * @return bool True when the autoloader was loaded.
 	 */
 	public static function autoload(): bool {
-		$autoload = FINANCING_CA_PATH . '/vendor/autoload.php';
+		$autoload = TANKLESS_PATH . '/vendor/autoload.php';
 
 		if ( file_exists( $autoload ) ) {
 			require_once $autoload; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingCustomConstant
@@ -32,7 +32,7 @@ final class Autoloader {
 			static function (): void {
 				printf(
 					'<div class="notice notice-error"><p>%s</p></div>',
-					esc_html__( 'Financing.ca theme: Composer dependencies are missing. Run "composer install" in the theme directory.', 'financing-ca' )
+					esc_html__( 'The Tankless theme: Composer dependencies are missing. Run "composer install" in the theme directory.', 'the-tankless' )
 				);
 			}
 		);

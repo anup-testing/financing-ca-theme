@@ -2,12 +2,12 @@
 /**
  * Tests for the lead REST endpoint.
  *
- * @package Financing\Theme
+ * @package Tankless\Theme
  */
 
 declare( strict_types = 1 );
 
-namespace Financing\Theme\Tests;
+namespace Tankless\Theme\Tests;
 
 use WP_REST_Request;
 use WP_UnitTestCase;
@@ -24,12 +24,8 @@ class Lead_Rest_ControllerTest extends WP_UnitTestCase {
 	 */
 	private function payload(): array {
 		return [
-			'business' => 'Acme Roofing',
-			'name'     => 'Jane Doe',
-			'phone'    => '555-0100',
-			'email'    => 'jane@example.com',
-			'province' => 'ON',
-			'industry' => 'Home improvement',
+			'email'  => 'jane@example.com',
+			'source' => 'footer-newsletter',
 		];
 	}
 
@@ -39,7 +35,7 @@ class Lead_Rest_ControllerTest extends WP_UnitTestCase {
 	 * @param array<string, string> $params Params.
 	 */
 	private function post( array $params ): \WP_REST_Response {
-		$request = new WP_REST_Request( 'POST', '/financing-ca/v1/lead' );
+		$request = new WP_REST_Request( 'POST', '/the-tankless/v1/lead' );
 		$request->set_body_params( $params );
 		return rest_do_request( $request );
 	}

@@ -2,18 +2,18 @@
 /**
  * Theme bootstrap: registers every feature class.
  *
- * @package Financing\Theme
+ * @package Tankless\Theme
  */
 
 declare( strict_types = 1 );
 
-namespace Financing\Theme;
+namespace Tankless\Theme;
 
-use Financing\Theme\Core\Assets;
-use Financing\Theme\Core\Security_Headers;
-use Financing\Theme\Core\Seo;
-use Financing\Theme\Core\Theme_Setup;
-use Financing\Theme\Modules\Lead\Lead_Rest_Controller;
+use Tankless\Theme\Core\Assets;
+use Tankless\Theme\Core\Security_Headers;
+use Tankless\Theme\Core\Seo;
+use Tankless\Theme\Core\Theme_Setup;
+use Tankless\Theme\Modules\Lead\Lead_Rest_Controller;
 use rtCamp\WPPrimitives\Contracts\Traits\Loader;
 use rtCamp\WPPrimitives\Contracts\Traits\Singleton;
 
