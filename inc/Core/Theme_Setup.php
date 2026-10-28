@@ -2,12 +2,12 @@
 /**
  * Theme supports, editor styles and pattern categories.
  *
- * @package Financing\Theme
+ * @package Tankless\Theme
  */
 
 declare( strict_types = 1 );
 
-namespace Financing\Theme\Core;
+namespace Tankless\Theme\Core;
 
 use rtCamp\WPPrimitives\Contracts\Interfaces\Registrable;
 
@@ -22,13 +22,14 @@ class Theme_Setup implements Registrable {
 	public function register_hooks(): void {
 		add_action( 'after_setup_theme', [ $this, 'setup' ] );
 		add_action( 'init', [ $this, 'register_pattern_category' ] );
+		add_action( 'init', [ $this, 'register_block_styles' ] );
 	}
 
 	/**
 	 * Registers theme supports and editor styles.
 	 */
 	public function setup(): void {
-		load_theme_textdomain( 'financing-ca', FINANCING_CA_PATH . '/languages' );
+		load_theme_textdomain( 'the-tankless', TANKLESS_PATH . '/languages' );
 
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
@@ -50,8 +51,28 @@ class Theme_Setup implements Registrable {
 	 */
 	public function register_pattern_category(): void {
 		register_block_pattern_category(
-			'financing-ca',
-			[ 'label' => __( 'Financing.ca sections', 'financing-ca' ) ]
+			'the-tankless',
+			[ 'label' => __( 'The Tankless sections', 'the-tankless' ) ]
+		);
+	}
+
+	/**
+	 * Registers the button styles used by the patterns.
+	 */
+	public function register_block_styles(): void {
+		register_block_style(
+			'core/button',
+			[
+				'name'  => 'light',
+				'label' => __( 'Light pill', 'the-tankless' ),
+			]
+		);
+		register_block_style(
+			'core/button',
+			[
+				'name'  => 'text',
+				'label' => __( 'Text link', 'the-tankless' ),
+			]
 		);
 	}
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Financing.ca Theme">
-	<description>PHPCS rules for the Financing.ca theme.</description>
+<ruleset name="The Tankless Theme">
+	<description>PHPCS rules for The Tankless theme.</description>
 
 	<file>.</file>
 	<exclude-pattern>*/patterns/*</exclude-pattern>
@@ -20,16 +20,16 @@
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array"><element value="financing-ca"/></property>
+			<property name="text_domain" type="array"><element value="the-tankless"/></property>
 		</properties>
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="financing_ca"/>
-				<element value="FINANCING_CA"/>
-				<element value="Financing\Theme"/>
+				<element value="tankless"/>
+				<element value="TANKLESS"/>
+				<element value="Tankless\Theme"/>
 			</property>
 		</properties>
 	</rule>

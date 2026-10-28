@@ -1,7 +1,7 @@
 {
-	"name": "financing-ca-theme",
-	"version": "1.0.0",
-	"description": "Block theme for financing.ca",
+	"name": "the-tankless-theme",
+	"version": "2.0.0",
+	"description": "Block theme for The Tankless",
 	"private": true,
 	"license": "GPL-2.0-or-later",
 	"engines": {

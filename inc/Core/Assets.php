@@ -2,12 +2,12 @@
 /**
  * Registers and enqueues theme assets.
  *
- * @package Financing\Theme
+ * @package Tankless\Theme
  */
 
 declare( strict_types = 1 );
 
-namespace Financing\Theme\Core;
+namespace Tankless\Theme\Core;
 
 use rtCamp\WPPrimitives\AssetLoader;
 use rtCamp\WPPrimitives\Contracts\Interfaces\Registrable;
@@ -20,15 +20,14 @@ class Assets extends AssetLoader implements Registrable {
 	/**
 	 * Handle prefix.
 	 */
-	public const HANDLE_PREFIX = 'financing-ca-';
+	public const HANDLE_PREFIX = 'the-tankless-';
 
 	/**
 	 * Self-hosted font files, relative to the theme root.
 	 */
 	public const FONTS = [
-		'manrope'               => 'assets/fonts/manrope-latin-var.woff2',
-		'instrument-serif'      => 'assets/fonts/instrument-serif-latin.woff2',
-		'instrument-serif-ital' => 'assets/fonts/instrument-serif-latin-italic.woff2',
+		'manrope' => 'assets/fonts/manrope-latin-var.woff2',
+		'exo-2'   => 'assets/fonts/exo-2-latin-var.woff2',
 	];
 
 	/**
@@ -40,7 +39,7 @@ class Assets extends AssetLoader implements Registrable {
 	 * Constructor.
 	 */
 	public function __construct() {
-		parent::__construct( FINANCING_CA_PATH, get_template_directory_uri(), 'assets/build' );
+		parent::__construct( TANKLESS_PATH, get_template_directory_uri(), 'assets/build' );
 	}
 
 	/**
@@ -75,12 +74,11 @@ class Assets extends AssetLoader implements Registrable {
 		};
 
 		$css  = $face( 'Manrope', 'normal', '400 800', self::FONTS['manrope'] );
-		$css .= $face( 'Instrument Serif', 'normal', '400', self::FONTS['instrument-serif'] );
-		$css .= $face( 'Instrument Serif', 'italic', '400', self::FONTS['instrument-serif-ital'] );
+		$css .= $face( 'Exo 2', 'normal', '100 900', self::FONTS['exo-2'] );
 
-		wp_register_style( 'financing-ca-fonts', false, [], FINANCING_CA_VERSION );
-		wp_enqueue_style( 'financing-ca-fonts' );
-		wp_add_inline_style( 'financing-ca-fonts', $css );
+		wp_register_style( 'the-tankless-fonts', false, [], TANKLESS_VERSION );
+		wp_enqueue_style( 'the-tankless-fonts' );
+		wp_add_inline_style( 'the-tankless-fonts', $css );
 	}
 
 	/**
@@ -90,7 +88,7 @@ class Assets extends AssetLoader implements Registrable {
 		$style = $this->handle( 'styles' );
 
 		if ( $this->register_style( $style, 'css/frontend/styles' ) ) {
-			wp_style_add_data( $style, 'path', FINANCING_CA_BUILD_DIR . '/css/frontend/styles.css' );
+			wp_style_add_data( $style, 'path', TANKLESS_BUILD_DIR . '/css/frontend/styles.css' );
 			wp_enqueue_style( $style );
 		}
 
@@ -98,8 +96,8 @@ class Assets extends AssetLoader implements Registrable {
 			wp_enqueue_script( $this->handle( 'frontend' ) );
 			wp_localize_script(
 				$this->handle( 'frontend' ),
-				'FinancingCA',
-				[ 'leadUrl' => esc_url_raw( rest_url( 'financing-ca/v1/lead' ) ) ]
+				'TheTankless',
+				[ 'leadUrl' => esc_url_raw( rest_url( 'the-tankless/v1/lead' ) ) ]
 			);
 		}
 	}

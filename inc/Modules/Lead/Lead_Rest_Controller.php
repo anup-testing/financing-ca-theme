@@ -1,15 +1,15 @@
 <?php
 /**
- * Partner lead form REST endpoint.
+ * Lead / newsletter form REST endpoint (footer email sign-up, future contact forms).
  *
- * Emails the site admin. Filter `financing_ca_lead_recipient` to route elsewhere / to a CRM.
+ * Emails the site admin. Filter `tankless_lead_recipient` to route elsewhere / to a CRM.
  *
- * @package Financing\Theme
+ * @package Tankless\Theme
  */
 
 declare( strict_types = 1 );
 
-namespace Financing\Theme\Modules\Lead;
+namespace Tankless\Theme\Modules\Lead;
 
 use WP_REST_Request;
 use WP_REST_Response;
@@ -31,18 +31,18 @@ class Lead_Rest_Controller extends AbstractRESTController {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'financing-ca/v1';
+	protected $namespace = 'the-tankless/v1';
 
 	/**
 	 * Form fields and their email labels.
 	 */
 	public const FIELDS = [
-		'business' => 'Business name',
-		'name'     => 'Contact name',
-		'phone'    => 'Phone',
-		'email'    => 'Email',
-		'province' => 'Province',
-		'industry' => 'Industry',
+		'email'   => 'Email',
+		'name'    => 'Name',
+		'phone'   => 'Phone',
+		'city'    => 'City',
+		'message' => 'Message',
+		'source'  => 'Form',
 	];
 
 	/**
@@ -75,7 +75,7 @@ class Lead_Rest_Controller extends AbstractRESTController {
 
 		// phpcs:ignore WordPressVIPMinimum.Variables.ServerVariables.UserControlledHeaders, WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___SERVER__REMOTE_ADDR__ -- Rate-limit key only.
 		$ip   = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
-		$key  = 'fca_lead_' . md5( $ip );
+		$key  = 'tankless_lead_' . md5( $ip );
 		$hits = (int) get_transient( $key );
 
 		if ( $hits >= self::RATE_LIMIT ) {
@@ -91,10 +91,11 @@ class Lead_Rest_Controller extends AbstractRESTController {
 
 		$values = [];
 		foreach ( array_keys( self::FIELDS ) as $name ) {
-			$values[ $name ] = sanitize_text_field( (string) $request->get_param( $name ) );
+			$value           = (string) $request->get_param( $name );
+			$values[ $name ] = 'message' === $name ? sanitize_textarea_field( $value ) : sanitize_text_field( $value );
 		}
 
-		if ( '' === $values['business'] || '' === $values['name'] || '' === $values['phone'] || ! is_email( $values['email'] ) ) {
+		if ( ! is_email( $values['email'] ) ) {
 			return new WP_REST_Response(
 				[
 					'ok'    => false,
@@ -106,7 +107,9 @@ class Lead_Rest_Controller extends AbstractRESTController {
 
 		$lines = [];
 		foreach ( self::FIELDS as $name => $label ) {
-			$lines[] = $label . ': ' . $values[ $name ];
+			if ( '' !== $values[ $name ] ) {
+				$lines[] = $label . ': ' . $values[ $name ];
+			}
 		}
 
 		/**
@@ -114,9 +117,9 @@ class Lead_Rest_Controller extends AbstractRESTController {
 		 *
 		 * @param string $to Recipient email address.
 		 */
-		$to      = apply_filters( 'financing_ca_lead_recipient', get_option( 'admin_email' ) );
-		$subject = 'New partner lead: ' . $values['business'];
-		$headers = [ 'Reply-To: ' . $values['name'] . ' <' . $values['email'] . '>' ];
+		$to      = apply_filters( 'tankless_lead_recipient', get_option( 'admin_email' ) );
+		$subject = 'New website enquiry: ' . $values['email'];
+		$headers = [ 'Reply-To: ' . ( '' !== $values['name'] ? $values['name'] . ' ' : '' ) . '<' . $values['email'] . '>' ];
 
 		// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail -- Single admin notification.
 		if ( ! wp_mail( $to, $subject, implode( "\n", $lines ), $headers ) ) {

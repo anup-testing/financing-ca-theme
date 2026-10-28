@@ -5,7 +5,7 @@ declare(strict_types = 1);
 /**
  * PHPUnit bootstrap (requires wp-phpunit and a WP test DB; run via `npm run test:php` in wp-env).
  *
- * @package Financing\Theme
+ * @package Tankless\Theme
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' ) ?: dirname( __DIR__, 2 ) . '/vendor/wp-phpunit/wp-phpunit';
