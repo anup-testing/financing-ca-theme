@@ -255,47 +255,29 @@ to{transform:translateX(-50%)}}
 .q figcaption span{color:var(--muted);font-size:12.5px}
 
 /* ---------- footer ---------- */
-.foot{position:relative;overflow:hidden;background:var(--base);border-top:1px solid var(--line);padding:84px 0 28px;font-size:14px}
+.foot{position:relative;overflow:hidden;background:var(--base);border-top:1px solid var(--line);padding:72px 0 0;font-size:13px}
 
-.foot::after{content:"";position:absolute;right:-160px;bottom:-160px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(42,168,234,.18),transparent 70%);pointer-events:none}
+.foot-cols{gap:48px}
 
-.foot-in{position:relative;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px}
+.foot-cols .foot-brand{flex:1.6}
 
-.foot-brand p{margin:20px 0 26px;max-width:340px;font-size:13.5px}
+.foot-logo{margin:0 0 18px}
 
-.foot-col h4{font-size:17px;font-weight:600;margin-bottom:20px}
+.foot-logo .brand{align-items:flex-start}
 
-.foot-col a{display:block;padding:5px 0;color:var(--body);transition:.15s}
+.foot-logo .brand-the{font-size:11px;margin-left:2px}
 
-.foot-col a:hover{color:var(--brand)}
+.foot-logo .brand-name{font-size:22px;letter-spacing:.02em}
 
-.foot-col .mail{display:inline-flex;align-items:center;gap:10px;color:#fff}
+.foot-brand p:not(.foot-logo){max-width:280px;margin:0;color:var(--body)}
 
-.foot-col .mail svg{width:16px;height:16px;fill:none;stroke:var(--brand);stroke-width:1.8}
+.foot-col h4{font-family:Manrope,sans-serif;font-size:13px;font-weight:600;color:#fff;margin:0 0 16px}
 
-.subscribe{position:relative;display:flex;max-width:340px;border:1px solid var(--brand);border-radius:6px;background:#0d1117;box-shadow:0 0 24px -10px rgba(42,168,234,.7)}
+.foot-col p{margin:0 0 8px;color:var(--body)}
 
-.subscribe input[type="email"]{flex:1;min-width:0;background:transparent;border:0;color:#fff;font:inherit;font-size:14px;padding:14px 16px}
+.foot-col a:hover,.foot-base a:hover{color:var(--brand)}
 
-.subscribe input[type="email"]::placeholder{color:#c9ccd1}
-
-.subscribe input[type="email"]:focus{outline:none}
-
-.subscribe input.err{color:#ff8a7a}
-
-.subscribe button{background:none;border:0;padding:0 16px;color:var(--brand);cursor:pointer}
-
-.subscribe button svg{width:20px;height:20px;fill:currentcolor}
-
-.subscribe button:disabled{opacity:.5;cursor:wait}
-
-.hp{position:absolute;left:-9999px}
-
-.formnote{position:absolute;top:100%;left:0;margin:8px 0 0;font-size:12.5px;color:#ff8a7a}
-
-.formnote.good{color:var(--brand)}
-
-.foot-base{position:relative;border-top:1px solid var(--line);margin-top:72px;padding-top:24px;font-size:12.5px}
+.foot-base{display:flex;flex-wrap:wrap;gap:12px 32px;border-top:1px solid var(--line);margin-top:56px;padding-top:22px;font-size:11.5px;color:var(--muted)}
 
 .foot-base p{margin:0}
 
@@ -526,9 +508,9 @@ to{transform:translateX(-50%)}}
 
 /* ---------- footer watermark ---------- */
 .foot-mark{
-  position:relative;text-align:center;font-family:var(--display);font-weight:800;line-height:.8;white-space:nowrap;
-  font-size:clamp(56px,13vw,190px);margin:48px 0 -28px;color:transparent;
-  background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02));-webkit-background-clip:text;background-clip:text;user-select:none;
+  position:relative;text-align:center;font-family:var(--display);font-weight:800;line-height:.8;white-space:nowrap;letter-spacing:-.01em;
+  font-size:clamp(48px,14.5vw,210px);margin:40px 0 -.12em;color:transparent;
+  background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02) 85%);-webkit-background-clip:text;background-clip:text;user-select:none;
 }
 
 /* ---------- reveal ---------- */
@@ -576,8 +558,6 @@ to{transform:translateX(-50%)}}
 
   .adv-stats{position:static;grid-auto-flow:column;gap:22px}
 
-  .foot-in{grid-template-columns:1fr 1fr}
-
   .foot-brand{grid-column:1 / -1}
 }
 
@@ -594,8 +574,6 @@ to{transform:translateX(-50%)}}
   .adv-media{flex-direction:column;align-items:flex-start}
 
   .adv-stats{grid-auto-flow:row}
-
-  .foot-in{grid-template-columns:1fr}
 
   .page-hero{padding:96px 0 80px}
 }
@@ -625,4 +603,8 @@ to{transform:translateX(-50%)}}
   .why-left,.swap-mid{flex:none;width:100%}
 
   .cta-card{flex-direction:column;align-items:flex-start;padding:36px 24px}
+
+  .foot-cols{display:grid;grid-template-columns:1fr 1fr;gap:36px 24px}
+
+  .foot-cols .foot-brand{grid-column:1 / -1}
 }

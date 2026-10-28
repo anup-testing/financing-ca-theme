@@ -15,7 +15,7 @@ Zip the theme (including `vendor/` and `assets/build/`, excluding `node_modules/
 - `inc/` – PSR-4 `Tankless\Theme\` classes. Register new classes in `inc/Main.php` (`Main::CLASSES`).
   - `Core/` Assets, Theme_Setup, Seo, Security_Headers · `Modules/Lead/` REST lead endpoint
 - `src/css`, `src/js` – sources; compiled to `assets/build/` (never edit build output).
-- `templates/`, `parts/`, `patterns/` – block theme markup. `#leadform`, `#formnote`, `#nav` are used by JS; keep them.
+- `templates/`, `parts/`, `patterns/` – block theme markup. `#nav` (and `#leadform`/`#formnote` if added) are used by JS; keep them.
   - `templates/front-page.html` (header-home part): home-hero → home-ticker → home-showcase → home-features →
     home-hard-water → home-why-switch → home-swap → home-cta. Built from core blocks (group, columns, heading,
     paragraph, image, buttons) so every word, image and button is editable in the Site Editor.
@@ -25,9 +25,11 @@ Zip the theme (including `vendor/` and `assets/build/`, excluding `node_modules/
 
 ## Pages the theme links to
 Create these pages in WordPress so header/footer links resolve: `about-us`, `faqs`, `blog` (posts page),
-`contact-us`, `privacy-policy`, `terms-and-conditions`.
+`contact-us`, `services`, `privacy-policy`.
 
 ## Notes
-- Footer email form POSTs to `/wp-json/the-tankless/v1/lead` (emails admin; filter `tankless_lead_recipient`).
-  Only `email` is required; `name`, `phone`, `city`, `message`, `source` are optional for future contact forms.
+- `parts/footer.html` is core blocks (edit it in Site Editor → Patterns → Footer). Phone `(416) 555-0142` and
+  `TSSA contractor #00-000000` are placeholders — replace before launch.
+- Lead endpoint `/wp-json/the-tankless/v1/lead` (emails admin; filter `tankless_lead_recipient`) is kept for a
+  future contact form: a form with `id="leadform"` + `#formnote` is wired automatically. Only `email` is required.
 - `assets/images/*.svg` are placeholders (product, storage tank, Ontario coverage map) — swap in real photos via the Image blocks.
