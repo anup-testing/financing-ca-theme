@@ -22,6 +22,7 @@ class Theme_Setup implements Registrable {
 	public function register_hooks(): void {
 		add_action( 'after_setup_theme', [ $this, 'setup' ] );
 		add_action( 'init', [ $this, 'register_pattern_category' ] );
+		add_action( 'init', [ $this, 'register_block_styles' ] );
 	}
 
 	/**
@@ -52,6 +53,26 @@ class Theme_Setup implements Registrable {
 		register_block_pattern_category(
 			'the-tankless',
 			[ 'label' => __( 'The Tankless sections', 'the-tankless' ) ]
+		);
+	}
+
+	/**
+	 * Registers the button styles used by the patterns.
+	 */
+	public function register_block_styles(): void {
+		register_block_style(
+			'core/button',
+			[
+				'name'  => 'light',
+				'label' => __( 'Light pill', 'the-tankless' ),
+			]
+		);
+		register_block_style(
+			'core/button',
+			[
+				'name'  => 'text',
+				'label' => __( 'Text link', 'the-tankless' ),
+			]
 		);
 	}
 }

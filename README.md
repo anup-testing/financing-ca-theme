@@ -16,8 +16,12 @@ Zip the theme (including `vendor/` and `assets/build/`, excluding `node_modules/
   - `Core/` Assets, Theme_Setup, Seo, Security_Headers · `Modules/Lead/` REST lead endpoint
 - `src/css`, `src/js` – sources; compiled to `assets/build/` (never edit build output).
 - `templates/`, `parts/`, `patterns/` – block theme markup. `#leadform`, `#formnote`, `#nav` are used by JS; keep them.
-  - `templates/page-about.html` (also selectable as the "About Page" template) and `templates/front-page.html`
-    render: page-hero → marquee → story → mission → advantages → installation → testimonials.
+  - `templates/front-page.html` (header-home part): home-hero → home-ticker → home-showcase → home-features →
+    home-hard-water → home-why-switch → home-swap → home-cta. Built from core blocks (group, columns, heading,
+    paragraph, image, buttons) so every word, image and button is editable in the Site Editor.
+  - `templates/page-about.html` ("About Page" template): page-hero → marquee → story → mission → advantages →
+    installation → testimonials. Card grids in these patterns are still `wp:html`.
+  - Button block styles `light` and `text` are registered in `Core/Theme_Setup`.
 
 ## Pages the theme links to
 Create these pages in WordPress so header/footer links resolve: `about-us`, `faqs`, `blog` (posts page),
@@ -26,5 +30,4 @@ Create these pages in WordPress so header/footer links resolve: `about-us`, `faq
 ## Notes
 - Footer email form POSTs to `/wp-json/the-tankless/v1/lead` (emails admin; filter `tankless_lead_recipient`).
   Only `email` is required; `name`, `phone`, `city`, `message`, `source` are optional for future contact forms.
-- `assets/images/tankless-unit.svg` is a placeholder illustration — swap in the real product photo.
-- The front page currently reuses the About layout; replace with a dedicated home layout when its design is ready.
+- `assets/images/*.svg` are placeholders (product, storage tank, Ontario coverage map) — swap in real photos via the Image blocks.

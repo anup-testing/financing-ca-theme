@@ -48,6 +48,11 @@
           "slug": "brand",
           "color": "#2aa8ea",
           "name": "Brand blue"
+        },
+        {
+          "slug": "accent",
+          "color": "#f28a2e",
+          "name": "Accent orange"
         }
       ]
     },
@@ -91,11 +96,6 @@
           "fontFamily": "var(--wp--preset--font-family--exo-2)",
           "fontWeight": "500"
         }
-      },
-      "link": {
-        "color": {
-          "text": "#2aa8ea"
-        }
       }
     }
   },
@@ -112,6 +112,11 @@
     {
       "name": "header",
       "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "header-home",
+      "title": "Header (home)",
       "area": "header"
     },
     {

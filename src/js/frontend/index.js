@@ -18,8 +18,24 @@
 		.querySelectorAll( '.menu-link, .mobile-menu a' )
 		.forEach( function ( a ) {
 			const path = a.pathname.replace( /\/+$/, '' ) || '/';
-			if ( path === here && ! a.classList.contains( 'btn' ) ) {
+			if (
+				path === here &&
+				! a.hash &&
+				! a.classList.contains( 'btn' )
+			) {
 				a.setAttribute( 'aria-current', 'page' );
+			}
+		} );
+
+	/* ---- ticker: duplicate the track content for a seamless loop ---- */
+	document
+		.querySelectorAll( '.ticker .marquee-track' )
+		.forEach( function ( track ) {
+			const first = track.firstElementChild;
+			if ( first && track.children.length === 1 ) {
+				const copy = first.cloneNode( true );
+				copy.setAttribute( 'aria-hidden', 'true' );
+				track.appendChild( copy );
 			}
 		} );
 

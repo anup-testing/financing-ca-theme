@@ -16,14 +16,14 @@
 <p class="kicker">Our Story</p>
 <!-- /wp:paragraph -->
 <!-- wp:image {"className":"unit-img"} -->
-<figure class="wp-block-image unit-img"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/tankless-unit.svg' ) ); ?>" alt="The Tankless wall-mounted water heater" width="320" height="440" loading="lazy"/></figure>
+<figure class="wp-block-image unit-img"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/tankless-unit.svg' ) ); ?>" alt="The Tankless wall-mounted water heater"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:group -->
 <!-- wp:group {"className":"story-copy reveal"} -->
 <div class="wp-block-group story-copy reveal">
 <!-- wp:heading {"className":"h2"} -->
-<h2 class="wp-block-heading h2">Built for <br><span class="hl">Real-Life</span> <br>Demands</h2>
+<h2 class="wp-block-heading h2">Built for <br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-brand-color">Real-Life</mark> <br>Demands</h2>
 <!-- /wp:heading -->
 <!-- wp:paragraph -->
 <p>The Tankless started with a straightforward idea: home should make life easier. Many people were dealing with bulky tanks, wasted space, and higher energy costs than necessary. We knew there was a better option. A system that heats water only when you need it, and helps reduce everyday waste.</p>
